@@ -22,21 +22,9 @@ app.post('/api/notification', (req, res) => {
   for (const token of tokens) {
     admin.messaging().send({
       token: token, // ['token_1', 'token_2', ...]
-      data:{
-        notifee: {
-          body: `${sales} solicita ${productName}`,
-          android: {
-            channelId: 'default',
-            actions: [
-              {
-                title: 'Mark as Read',
-                pressAction: {
-                  id: 'read',
-                },
-              },
-            ],
-          }
-        } 
+      data: {
+        title: `Pedido de ${sales}`,
+        body: `${sales} solicita ${productName}`,
       },
       notification: {
         title: `Pedido de ${sales}`,
