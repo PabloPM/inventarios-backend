@@ -16,16 +16,15 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/notification', (req, res) => {
-  const { tokens=[], productName, store } = req.body
+  const { tokens=[], productName='', sales = '' } = req.body
   console.log(req.body)
 
   for (const token of tokens) {
     admin.messaging().send({
       token: token, // ['token_1', 'token_2', ...]
       notification: {
-        title: 'Basic Notification',
-        body: 'This is a basic notification sent from the server!',
-        imageUrl: 'https://my-cdn.com/app-logo.png',
+        title: `Pedido de ${sales}`,
+        body: `${sales} solicita ${productName}`,
       },
     })
   }
