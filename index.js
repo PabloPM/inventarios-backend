@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 const PORT = process.env.PORT || 8082; 
-const config = require('/etc/secrets/config.json')
+const config = require('/etc/secrets/config')
 
 app.use(express.json())
 
